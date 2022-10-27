@@ -5,7 +5,7 @@
             <span class="self-center text-xl font-semibold whitespace-nowrap">JRC Tecnología</span>
         </a>
         <div class="flex md:order-2">
-            <button type="button" data-collapse-toggle="navbar-search" aria-controls="navbar-search"
+            <button onclick="toggle();" type="button" data-collapse-toggle="navbar-search" aria-controls="navbar-search"
                 aria-expanded="false"
                 class="md:hidden text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 rounded-lg text-sm p-2.5 mr-1">
                 <svg class="w-5 h-5" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
@@ -28,9 +28,9 @@
                 </div>
                 <input type="text" id="search-navbar"
                     class="block p-2 pl-10 w-full text-gray-900 bg-gray-50 rounded-lg border border-gray-300 sm:text-sm focus:ring-blue-500 focus:border-blue-500"
-                    placeholder="Search...">
+                    placeholder="Buscar evento...">
             </div>
-            <button onclick="toggle()" data-collapse-toggle="navbar-search" type="button"
+            <button onclick="toggle();" data-collapse-toggle="navbar-search" type="button"
                 class="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"
                 aria-controls="navbar-search" aria-expanded="false">
                 <span class="sr-only">Open menu</span>
@@ -52,24 +52,28 @@
                             clip-rule="evenodd"></path>
                     </svg>
                 </div>
-                <input type="text" id="search-navbar"
-                    class="block p-2 pl-10 w-full text-gray-900 bg-gray-50 rounded-lg border border-gray-300 sm:text-sm focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    placeholder="Search...">
+                <input 
+                    type="text" 
+                    id="search-navbar" 
+                    class="block p-2 pl-10 w-full text-gray-900 bg-gray-50 rounded-lg border border-gray-300 sm:text-sm focus:ring-blue-500 focus:border-blue-500"
+                    placeholder="Buscar evento...">
             </div>
-            <ul
-                class="flex flex-col p-4 mt-4 bg-gray-50 rounded-lg border border-gray-100 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white">
+            <ul class="flex flex-col p-4 mt-4 bg-gray-50 rounded-lg border border-gray-100 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white">
                 <li>
-                    <a href="#"
-                        class="block py-2 pr-4 pl-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white"
-                        aria-current="page">Home</a>
+                    <a href="#" class="block py-2 pr-4 pl-3 rounded {{ setActive('home') }}">
+                        Inicio</a>
                 </li>
                 <li>
-                    <a href="#"
-                        class="block py-2 pr-4 pl-3 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">About</a>
+                    <a href="{{ route('events') }}" class="block py-2 pr-4 pl-3 rounded {{ setActive('events') }}">
+                        Eventos</a>
                 </li>
                 <li>
-                    <a href="#"
-                        class="block py-2 pr-4 pl-3 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Services</a>
+                    <a href="#" class="block py-2 pr-4 pl-3 rounded {{ setActive('services') }} ">
+                        Servicios</a>
+                </li>
+                <li>
+                    <a href="#" class="block py-2 pr-4 pl-3 rounded {{ setActive('us') }}">
+                        Nosotros</a>
                 </li>
             </ul>
         </div>
