@@ -1,24 +1,37 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+use App\Http\Controllers\ClientsController;
 
 Route::get('/', function () {
-    return view('welcome');
+    // redireccion temporal para la pagina de eventos
+    return redirect('/eventos');
 })->name('home');
 
-Route::get('/admin/dashboard', function () {
-    return view('admin.dashboard');
-})->middleware(['auth', 'verified'])->name('admin.dashboard');
+Route::post('/', [ClientsController::class, 'newSuscription'])->name('newSuscription');
+
+Route::get('/eventos', function () {
+    return view('events');
+})->name('events');
+
+Route::group([
+    'middleware' => ['auth', 'verified'],
+    'prefix' => '/admin',
+    'as' => 'admin.'
+], function(){
+
+    Route::get('/dashboard', function() {
+        return view('admin.dashboard');
+    })->name('dashboard');
+    
+    Route::group([
+        'controller' => ClientsController::class,
+        'prefix' => '/clientes-registrados',
+        'as' => 'clients.'
+    ], function (){
+        Route::get('/', 'index')->name('index');
+    });
+
+});
 
 require __DIR__.'/auth.php';
