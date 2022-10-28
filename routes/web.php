@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Client;
+use App\Notifications\NewSuscriptor;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ClientsController;
 
