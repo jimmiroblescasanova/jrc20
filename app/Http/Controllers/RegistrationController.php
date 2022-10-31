@@ -3,12 +3,21 @@
 namespace App\Http\Controllers;
 
 use App\Models\Event;
+use App\Mail\RegistrationSuccess;
 use Flasher\Laravel\Facade\Flasher;
+use Illuminate\Support\Facades\Mail;
 use App\Http\Requests\SaveRegistrationRequest;
 
 class RegistrationController extends Controller
 {
 
+    /**
+     * Almacena el registro del evento
+     *
+     * @param SaveRegistrationRequest $request
+     * @param Event $event
+     * @return void
+     */
     public function store(SaveRegistrationRequest $request, Event $event)
     {
 
@@ -16,6 +25,8 @@ class RegistrationController extends Controller
            Flasher::addError('Algo salió mal, intenta de nuevo');
            return back();
         }
+
+        Mail::to($registry)->send(new RegistrationSuccess($event));
 
         Flasher::addSuccess('Hemos enviado la confirmación del registro a tu correo: ' . $registry->email);
 
