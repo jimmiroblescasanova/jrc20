@@ -25,9 +25,9 @@ class SaveRegistrationRequest extends FormRequest
     {
         return [
             'name' => ['string', 'min:5', 'required'],
-            'mail' => ['string', 'email', 'required'],
+            'email' => ['email', 'required'],
             'phone' => ['required', 'digits:10'],
-            'business' => ['string', 'min:5', 'required'],
+            'company' => ['string', 'min:5', 'required'],
         ];
     }
 }

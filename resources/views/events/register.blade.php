@@ -11,7 +11,7 @@
                             for="input-name" 
                             class="block mb-2 text-sm font-medium text-gray-800">
                             Nombre completo</label>
-                        <div class="relative mb-6">
+                        <div class="relative">
                             <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5 text-gray-500">
                                     <path d="M10 8a3 3 0 100-6 3 3 0 000 6zM3.465 14.493a1.23 1.23 0 00.41 1.412A9.957 9.957 0 0010 18c2.31 0 4.438-.784 6.131-2.1.43-.333.604-.903.408-1.41a7.002 7.002 0 00-13.074.003z" />
@@ -24,13 +24,14 @@
                                 class="pl-10 p-2.5 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 w-full block"
                                 placeholder="Nombre completo">
                         </div>
+                        <x-input-error-single field="name" />
                     </div>
                     <div id="group-mail" class="mb-3">
                         <label 
                             for="input-email" 
                             class="block mb-2 text-sm font-medium text-gray-800">
                             Correo electrónico</label>
-                        <div class="relative mb-6">
+                        <div class="relative">
                             <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5 text-gray-500">
                                     <path d="M3 4a2 2 0 00-2 2v1.161l8.441 4.221a1.25 1.25 0 001.118 0L19 7.162V6a2 2 0 00-2-2H3z" />
@@ -38,19 +39,20 @@
                                 </svg>
                             </div>
                             <input 
-                                type="mail" 
+                                type="email" 
                                 id="input-email"
                                 name="email"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5"
                                 placeholder="ejemplo@mail.com">
                         </div>
+                        <x-input-error-single field="email" />
                     </div>
                     <div id="group-phone" class="mb-3">
                         <label 
                             for="input-phone" 
                             class="block mb-2 text-sm font-medium text-gray-800">
                             Número de teléfono</label>
-                        <div class="relative mb-6">
+                        <div class="relative">
                             <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5 text-gray-500">
                                     <path d="M8 16.25a.75.75 0 01.75-.75h2.5a.75.75 0 010 1.5h-2.5a.75.75 0 01-.75-.75z" />
@@ -64,6 +66,7 @@
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5"
                                 placeholder="999 999 9999">
                         </div>
+                        <x-input-error-single field="phone" />
                     </div>
                     <div id="group-company">
                         <label 
@@ -84,6 +87,7 @@
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5"
                                 placeholder="MI EMPRESA SA DE CV">
                         </div>
+                        <x-input-error-single field="company" />
                     </div>
                 </fieldset>
                 <div class="py-3 flex flex-col space-y-3">
