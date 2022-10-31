@@ -15,6 +15,9 @@ class Event extends Model
     protected $casts = [
         'date' => 'date:d-m-Y',
     ];
+    protected $fillable = [
+        'title', 'slug', 'subtitle', 'summary', 'image', 'date',
+    ];
 
     protected function shortSummary(): Attribute
     {

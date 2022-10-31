@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminEventController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\ClientsController;
@@ -40,6 +41,16 @@ Route::group([
         'as' => 'clients.'
     ], function (){
         Route::get('/', 'index')->name('index');
+    });
+
+    Route::group([
+        'controller' => AdminEventController::class,
+        'prefix' => '/eventos',
+        'as' => 'events.',
+    ], function () {
+        Route::get('/', 'index')->name('index');
+        Route::get('/crear-evento', 'create')->name('create');
+        Route::post('/crear-evento', 'store')->name('store');
     });
 
 });

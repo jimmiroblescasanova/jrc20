@@ -3,7 +3,7 @@
     <div class="bg-gray-100 md:h-screen pt-16 md:pt-24 md:pb-8">
         <div class="bg-white mx-auto items-center w-4/5 md:flex md:h-144 rounded-lg border shadow-md md:flex-row">
             <img 
-                src="https://picsum.photos/800/1200" 
+                src="{{ asset($event->image) }}" 
                 class="object-cover h-full rounded-t-lg md:w-full md:rounded-none md:rounded-l-lg"
                 alt="">
             <div class="grid h-full justify-between p-8 leading-normal">
