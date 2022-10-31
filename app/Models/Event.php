@@ -22,4 +22,9 @@ class Event extends Model
             get: fn () => Str::limit($this->summary, 150, '...'),
         );
     }
+
+    public function registrations()
+    {
+        return $this->hasMany(Registration::class);
+    }
 }

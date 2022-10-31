@@ -2,7 +2,7 @@
 
     <div class="bg-gray-100 h-screen pt-16 md:pt-24 md:pb-8">
         <div class="bg-white p-5 mx-auto items-center w-4/5 md:h-144 rounded-lg border shadow-md">
-            <form action="{{ route('guest.events.saveRegistry', $event) }}" method="post">
+            <form action="{{ route('guest.registration.store', $event) }}" method="post">
                 @csrf 
                 <fieldset class="border p-4 rounded">
                     <legend class="px-4 text-center uppercase font-medium">Evento: {{ $event->title }}</legend>
@@ -58,7 +58,7 @@
                                 </svg>
                             </div>
                             <input 
-                                type="phone" 
+                                type="tel" 
                                 id="input-phone"
                                 name="phone"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5"
