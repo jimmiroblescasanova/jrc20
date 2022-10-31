@@ -30,7 +30,7 @@ Route::group([
     'as' => 'admin.'
 ], function(){
 
-    Route::get('/dashboard', function() {
+    Route::get('/', function() {
         return view('admin.dashboard');
     })->name('dashboard');
     
