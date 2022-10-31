@@ -1,9 +1,8 @@
 <?php
 
-use App\Models\Client;
-use App\Notifications\NewSuscriptor;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ClientsController;
+use App\Http\Controllers\EventController;
 
 Route::get('/', function () {
     // redireccion temporal para la pagina de eventos
@@ -12,9 +11,15 @@ Route::get('/', function () {
 
 Route::post('/', [ClientsController::class, 'newSuscription'])->name('newSuscription');
 
-Route::get('/eventos', function () {
-    return view('events');
-})->name('events');
+Route::group([
+    'controller' => EventController::class,
+    'as' => 'guest.events.'
+], function () {
+    Route::get('/eventos', 'index')->name('index');
+    Route::get('/eventos/{event:slug}', 'show')->name('show');
+    Route::get('/eventos/{event:slug}/register', 'register')->name('register');
+    Route::post('/eventos/{event:slug}/register', 'saveRegistry')->name('saveRegistry');
+});
 
 Route::group([
     'middleware' => ['auth', 'verified'],

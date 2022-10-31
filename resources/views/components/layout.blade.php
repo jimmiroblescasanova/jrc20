@@ -4,19 +4,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Home</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Scripts -->
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 
 </head>
 
 <body>
-    <section id="main">
-        @include('partials.navbar')
+    <div class="main-h-screen">
+        <header>
+            @include('partials.navbar')
+        </header>
 
-        <div id="container">
+        <main>
             {{ $slot }}
-        </div>
-    </section>
+        </main>
+    </div>
 </body>
 
 <script>

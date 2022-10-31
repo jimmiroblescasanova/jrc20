@@ -1,5 +1,5 @@
-<nav class="bg-white border-gray-200 px-2 sm:px-4 py-2.5 fixed w-full z-20 top-0">
-    <div class="container flex flex-wrap justify-between items-center mx-auto">
+<nav class="bg-white border-gray-200 px-2 py-1.5 sm:px-4 sm:py-0 fixed w-full z-20 top-0 shadow-md">
+    <div class="flex flex-wrap justify-between items-center mx-auto">
         <a href="https://flowbite.com/" class="flex items-center">
             <img src="https://flowbite.com/docs/images/logo.svg" class="mr-3 h-6 sm:h-9" alt="JRC Logo">
             <span class="self-center text-xl font-semibold whitespace-nowrap">JRC Tecnología</span>
@@ -64,7 +64,7 @@
                         Inicio</a>
                 </li>
                 <li>
-                    <a href="{{ route('events') }}" class="block py-2 pr-4 pl-3 rounded {{ setActive('events') }}">
+                    <a href="{{ route('guest.events.index') }}" class="block py-2 pr-4 pl-3 rounded {{ setActive('guest.events.*') }}">
                         Eventos</a>
                 </li>
                 <li>

@@ -8,8 +8,7 @@ use Illuminate\Notifications\Notifiable;
 
 class Client extends Model
 {
-    use HasFactory;
-    use Notifiable;
+    use HasFactory, Notifiable;
 
     protected $fillable = ['name', 'lastname', 'email', 'company'];
 }
