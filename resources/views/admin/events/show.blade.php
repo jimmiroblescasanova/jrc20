@@ -44,7 +44,7 @@
                             class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Temario, contenido, información, etc..."
                             >{{ $event->summary }}</textarea>
                     </div>
-                    <div class="mb-4"><a href="{{ asset($event->image) }}" target="_blank" class="hover:underline">Ver imagen en otra ventana</a></div>
+                    <div class="mb-4"><a href="{{ asset('storage/'.$event->image) }}" target="_blank" class="hover:underline">Ver imagen en otra ventana</a></div>
                     <div id="group-file" class="mb-3">
                         <input type="file" name="image" id="image">
                     </div>
