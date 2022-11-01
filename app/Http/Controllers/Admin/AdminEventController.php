@@ -9,6 +9,11 @@ use App\Http\Requests\SaveEventRequest;
 
 class AdminEventController extends Controller
 {
+    /**
+     * Enlista los eventos creados
+     *
+     * @return void
+     */
     public function index()
     {
         $events = Event::query()
@@ -20,6 +25,11 @@ class AdminEventController extends Controller
         ]);
     }
 
+    /**
+     * Vista para la creación del modelo
+     *
+     * @return void
+     */
     public function create()
     {
         return view('admin.events.create');
@@ -40,5 +50,16 @@ class AdminEventController extends Controller
         ]);
 
         return redirect()->route('admin.events.index');
+    }
+
+    /**
+     * Muestra el modelo del evento seleccionado
+     *
+     * @param Event $event
+     * @return void
+     */
+    public function show(Event $event)
+    {
+        return view('admin.events.show', compact('event'));
     }
 }

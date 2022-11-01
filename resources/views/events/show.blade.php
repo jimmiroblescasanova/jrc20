@@ -4,7 +4,7 @@
         <div class="bg-white mx-auto items-center w-4/5 md:flex md:h-144 rounded-lg border shadow-md md:flex-row">
             <img 
                 src="{{ asset($event->image) }}" 
-                class="object-cover h-full rounded-t-lg md:w-full md:rounded-none md:rounded-l-lg"
+                class="object-cover h-full hover:object-scale-down rounded-t-lg md:w-1/2 md:max-w-2xl md:rounded-none md:rounded-l-lg"
                 alt="">
             <div class="grid h-full justify-between p-8 leading-normal">
                 <div>

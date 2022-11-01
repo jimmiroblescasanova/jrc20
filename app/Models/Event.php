@@ -12,9 +12,7 @@ class Event extends Model
     use HasFactory;
 
     protected $dates = ['date'];
-    protected $casts = [
-        'date' => 'date:d-m-Y',
-    ];
+    
     protected $fillable = [
         'title', 'slug', 'subtitle', 'summary', 'image', 'date',
     ];
