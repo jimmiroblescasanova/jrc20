@@ -11,7 +11,7 @@ Route::get('/', function () {
     return redirect('/eventos');
 })->name('home');
 
-Route::post('/', [ClientsController::class, 'newSuscription'])->name('newSuscription');
+Route::post('/', [ClientsController::class, 'suscription'])->name('suscription');
 
 Route::group([
     'controller' => EventController::class,

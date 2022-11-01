@@ -18,7 +18,7 @@ class ClientsController extends Controller
         ]);
     }
 
-    public function newSuscription(NewClientRequest $request) {
+    public function suscription(NewClientRequest $request) {
         $client = Client::create($request->validated());
 
         $client->notify(new NewSuscriptor($client));

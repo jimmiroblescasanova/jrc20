@@ -60,7 +60,7 @@
             </div>
             <ul class="flex flex-col p-4 mt-4 bg-gray-50 rounded-lg border border-gray-100 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white">
                 <li>
-                    <a href="#" class="block py-2 pr-4 pl-3 rounded {{ setActive('home') }}">
+                    <a href="{{ route('home') }}" class="block py-2 pr-4 pl-3 rounded {{ setActive('home') }}">
                         Inicio</a>
                 </li>
                 <li>

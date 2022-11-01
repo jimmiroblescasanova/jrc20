@@ -1,9 +1,10 @@
 <x-layout>
-    <div class="px-6 pt-24 pb-12 md:px-12 bg-gray-100 text-gray-800 text-center lg:text-left">
 
-        <div class="container mx-auto xl:px-32">
+    <div class="bg-gray-200 pt-16 md:pt-24 md:pb-8 md:px-12">
+
+        <div class="container mx-auto px-5 xl:px-32">
             <div class="grid lg:grid-cols-2 gap-12 items-center">
-                <div class="mt-12 lg:mt-0">
+                <div class="mt-12 lg:mt-0 lg:text-left text-gray-800 text-center">
                     <h1 class="text-5xl md:text-6xl xl:text-7xl font-bold tracking-tight mb-12">Todo lo relacionado
                         <br /><span class="text-blue-600">a CONTPAQi</span>
                     </h1>
@@ -16,7 +17,7 @@
                 <div class="mb-12 lg:mb-0">
                     <div class="block rounded-lg shadow-lg bg-white px-6 py-12 md:px-12">
                         @if(!session('suscribed'))
-                            <form action="{{ route('newSuscription') }}" method="POST">
+                            <form action="{{ route('suscription') }}" method="POST">
                             @csrf 
                                 <div class="grid md:grid-cols-2 md:gap-6">
                                     <div class="mb-6">

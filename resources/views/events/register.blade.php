@@ -1,6 +1,6 @@
 <x-layout>
 
-    <div class="bg-gray-100 h-screen pt-16 md:pt-24 md:pb-8">
+    <div class="bg-gray-200 h-screen pt-16 md:pt-24 md:pb-8">
         <div class="bg-white p-5 mx-auto items-center w-4/5 md:h-144 rounded-lg border shadow-md">
             <form action="{{ route('guest.registration.store', $event) }}" method="post">
                 @csrf 
