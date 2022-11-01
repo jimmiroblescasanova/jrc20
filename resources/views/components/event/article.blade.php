@@ -6,7 +6,7 @@
     <div class="relative block bg-white rounded-lg shadow-lg">
         <div class="flex">
             <div class="relative overflow-hidden bg-no-repeat bg-cover shadow-lg rounded-lg mx-4 -mt-4" data-mdb-ripple="true" data-mdb-ripple-color="light">
-                <img src="{{ asset($event->image) }}" class="w-full" />
+                <img src="{{ asset('storage/'.$event->image) }}" class="w-full" />
                 <a href="{{ route('guest.events.show', $event->slug) }}">
                     <div class="absolute top-0 right-0 bottom-0 left-0 w-full h-full overflow-hidden bg-fixed opacity-0 hover:opacity-100 transition duration-300 ease-in-out"
                         style="background-color: rgba(251, 251, 251, 0.25)"></div>
