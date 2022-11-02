@@ -3,9 +3,13 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Event;
+use App\Models\Client;
 use Illuminate\Support\Str;
+use App\Models\Registration;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Mail;
 use App\Http\Requests\SaveEventRequest;
+use App\Mail\EventCreated;
 
 class AdminEventController extends Controller
 {
@@ -48,6 +52,13 @@ class AdminEventController extends Controller
             'image' => $path,
             'date' => $request->date,
         ]);
+
+        // lógica para enviar el email al queue 
+        $clients = Client::all();
+
+        foreach ($clients as $recipient) {
+            Mail::to($recipient->email)->queue(new EventCreated($event));
+        }
 
         return redirect()->route('admin.events.index');
     }
