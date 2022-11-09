@@ -53,6 +53,7 @@ Route::group([
         Route::get('/crear-evento', 'create')->name('create');
         Route::post('/crear-evento', 'store')->name('store');
         Route::get('/{event}/ver-evento', 'show')->name('show');
+        Route::patch('/{event}/ver-evento', 'update')->name('update');
     });
 
 });

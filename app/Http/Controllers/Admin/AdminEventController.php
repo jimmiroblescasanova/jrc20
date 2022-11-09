@@ -4,12 +4,12 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\Event;
 use App\Models\Client;
+use App\Mail\EventCreated;
 use Illuminate\Support\Str;
-use App\Models\Registration;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Mail;
 use App\Http\Requests\SaveEventRequest;
-use App\Mail\EventCreated;
+use App\Http\Requests\UpdateEventRequest;
 
 class AdminEventController extends Controller
 {
@@ -72,5 +72,26 @@ class AdminEventController extends Controller
     public function show(Event $event)
     {
         return view('admin.events.show', compact('event'));
+    }
+
+    /**
+     * Actualiza el modelo del event
+     *
+     * @param Event $event
+     * @param UpdateEventRequest $request
+     * @return void
+     */
+    public function update(Event $event, UpdateEventRequest $request)
+    {
+        $event->update($request->safe()->except('image'));
+
+        if ($request->file('image')) {
+            $path = $request->file('image')->store('events');
+            $event->update([
+                'image' => $path,
+            ]);
+        }
+
+        return redirect()->route('admin.events.index');
     }
 }
