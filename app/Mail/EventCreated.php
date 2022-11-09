@@ -33,7 +33,7 @@ class EventCreated extends Mailable
     public function envelope()
     {
         return new Envelope(
-            subject: 'Nuevo evento disponible en el portal',
+            subject: $this->event->title,
         );
     }
 
