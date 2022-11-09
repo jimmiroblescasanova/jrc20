@@ -18,13 +18,16 @@
         </header>
 
         <main>
-            {{ $slot }}
+            {{ $slot ?? '' }}
         </main>
     </div>
+    
+    @if (isset($scripts))
+        {{ $scripts }}
+    @endif
+    <script>
+    const menu = document.getElementById('navbar-search');
+    const toggle = () => menu.classList.toggle("hidden");
+    </script>
 </body>
-
-<script>
-  const menu = document.getElementById('navbar-search');
-  const toggle = () => menu.classList.toggle("hidden");
-</script>
 </html>

@@ -19,6 +19,7 @@ Route::group([
 ], function () {
     Route::get('/eventos', 'index')->name('index');
     Route::get('/eventos/{event:slug}', 'show')->name('show');
+    Route::post('/eventos/{event:slug}', 'invite')->name('invite');;
     Route::get('/eventos/{event:slug}/register', 'register')->name('register');
 });
 

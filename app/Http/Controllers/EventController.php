@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\ShareEvent;
 use App\Models\Event;
+use Flasher\Laravel\Facade\Flasher;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class EventController extends Controller
 {
@@ -44,5 +48,18 @@ class EventController extends Controller
     public function register(Event $event)
     {
         return view('events.register', compact('event'));
+    }
+
+    public function invite(Event $event, Request $request)
+    {
+        $validated = $request->validate([
+            'name' => 'required|string|min:5',
+            'email' =>'required|email',
+        ]);
+
+        Mail::to($validated['email'])->send(new ShareEvent($event, $validated['name']));
+
+        Flasher::addSuccess('La invitación ha sido enviada.');
+        return back();
     }
 }
