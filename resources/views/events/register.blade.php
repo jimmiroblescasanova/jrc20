@@ -1,7 +1,7 @@
 <x-layout>
 
     <div class="bg-gray-200 h-screen pt-16 md:pt-24 md:pb-8">
-        <div class="bg-white p-5 mx-auto items-center w-4/5 md:h-144 rounded-lg border shadow-md">
+        <div class="bg-white p-5 mx-auto items-center w-4/5 rounded-lg border shadow-md">
             <form action="{{ route('guest.registration.store', $event) }}" method="post">
                 @csrf 
                 <fieldset class="border p-4 rounded">
@@ -93,13 +93,17 @@
                 <div class="py-3 flex flex-col space-y-3">
                     <button 
                         type="submit" 
-                        class="block w-full text-white bg-blue-500 p-2 rounded hover:-translate-y-1 hover:bg-blue-600 duration-300 hover:scale-110 cursor-pointer">
+                        class="w-full text-white bg-blue-500 p-2 rounded hover:bg-blue-700 cursor-pointer inline-flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="mr-2 w-5 h-5">
+                        <path d="M5.433 13.917l1.262-3.155A4 4 0 017.58 9.42l6.92-6.918a2.121 2.121 0 013 3l-6.92 6.918c-.383.383-.84.685-1.343.886l-3.154 1.262a.5.5 0 01-.65-.65z" />
+                        <path d="M3.5 5.75c0-.69.56-1.25 1.25-1.25H10A.75.75 0 0010 3H4.75A2.75 2.75 0 002 5.75v9.5A2.75 2.75 0 004.75 18h9.5A2.75 2.75 0 0017 15.25V10a.75.75 0 00-1.5 0v5.25c0 .69-.56 1.25-1.25 1.25h-9.5c-.69 0-1.25-.56-1.25-1.25v-9.5z" />
+                        </svg>
                         Guardar registro
                     </button>
                     <button 
                         type="button"
                         onclick="history.back();"
-                        class="w-full text-gray-800 border p-2 rounded hover:bg-gray-200 inline-flex items-center place-content-center">
+                        class="w-full bg-white text-gray-800 border border-gray-400 p-2 rounded hover:bg-gray-300 inline-flex items-center justify-center">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="mr-2 w-5 h-5">
                             <path fill-rule="evenodd" d="M7.793 2.232a.75.75 0 01-.025 1.06L3.622 7.25h10.003a5.375 5.375 0 010 10.75H10.75a.75.75 0 010-1.5h2.875a3.875 3.875 0 000-7.75H3.622l4.146 3.957a.75.75 0 01-1.036 1.085l-5.5-5.25a.75.75 0 010-1.085l5.5-5.25a.75.75 0 011.06.025z" clip-rule="evenodd" />
                         </svg>
