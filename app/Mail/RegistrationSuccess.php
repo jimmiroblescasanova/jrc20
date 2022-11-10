@@ -51,7 +51,7 @@ class RegistrationSuccess extends Mailable
     public function content()
     {
         return new Content(
-            markdown: 'mail.registrations.success',
+            markdown: 'mail.RegistrationSuccess',
             with: [
                 'event' => $this->event,
             ]

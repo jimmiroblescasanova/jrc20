@@ -47,7 +47,7 @@ class ShareEvent extends Mailable
     public function content()
     {
         return new Content(
-            markdown: 'ShareEvent',
+            markdown: 'mail.ShareEvent',
             with: [
                 'event' => $this->event, 
                 'sender' => $this->sender

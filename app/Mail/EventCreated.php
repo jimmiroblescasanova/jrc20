@@ -45,7 +45,7 @@ class EventCreated extends Mailable
     public function content()
     {
         return new Content(
-            markdown: 'mail.admin.event-created',
+            markdown: 'mail.EventCreated',
             with: [
                 'event' => $this->event,
             ]
