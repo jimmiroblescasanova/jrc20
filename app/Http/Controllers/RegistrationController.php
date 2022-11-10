@@ -28,7 +28,7 @@ class RegistrationController extends Controller
 
         Mail::to($registry)->send(new RegistrationSuccess($event));
 
-        Flasher::addSuccess('Hemos enviado la confirmación del registro a tu correo: ' . $registry->email);
+        Flasher::addSuccess('Gracias por registrarte. Revisa tu correo.');
 
         return redirect()
             ->route('guest.events.show', $event);
