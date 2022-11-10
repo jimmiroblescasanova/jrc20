@@ -3,8 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Client;
-use App\Http\Requests\NewClientRequest;
-use App\Notifications\NewSuscriptor;
 
 class ClientsController extends Controller
 {
@@ -16,13 +14,5 @@ class ClientsController extends Controller
         return view('admin.clients', [
             'clients' => $clients,
         ]);
-    }
-
-    public function suscription(NewClientRequest $request) {
-        $client = Client::create($request->validated());
-
-        $client->notify(new NewSuscriptor($client));
-
-        return back()->with('suscribed', $client->name);
     }
 }

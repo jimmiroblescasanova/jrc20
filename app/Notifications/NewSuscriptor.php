@@ -29,7 +29,7 @@ class NewSuscriptor extends Notification
      */
     public function via($notifiable)
     {
-        return ['mail'];
+        return ['database'];
     }
 
     /**
@@ -38,13 +38,12 @@ class NewSuscriptor extends Notification
      * @param  mixed  $notifiable
      * @return \Illuminate\Notifications\Messages\MailMessage
      */
-    public function toMail($notifiable)
+    public function toArray($notifiable)
     {
-        return (new MailMessage)
-            ->subject('Suscripción exitosa')
-            ->markdown('mail.new-suscriptor', [
-                'name' => $this->client->name,
-            ]);
+        return [
+            'name' => $this->client->name,
+            'email' => $this->client->email,
+        ];
     }
 
 }

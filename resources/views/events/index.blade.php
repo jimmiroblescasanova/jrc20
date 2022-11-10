@@ -17,7 +17,7 @@
                 <div class="mb-12 lg:mb-0">
                     <div class="block rounded-lg shadow-lg bg-white px-6 py-12 md:px-12">
                         @if(!session('suscribed'))
-                            <form action="{{ route('suscription') }}" method="POST">
+                            <form action="{{ route('guest.events.suscription') }}" method="POST">
                             @csrf 
                                 <div class="grid md:grid-cols-2 md:gap-6">
                                     <div class="mb-6">

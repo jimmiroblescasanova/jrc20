@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Mail\ShareEvent;
 use App\Models\Event;
-use Flasher\Laravel\Facade\Flasher;
+use App\Models\Client;
+use App\Mail\ShareEvent;
 use Illuminate\Http\Request;
+use App\Events\ClientSuscribed;
+use Flasher\Laravel\Facade\Flasher;
 use Illuminate\Support\Facades\Mail;
+use App\Http\Requests\NewClientRequest;
 
 class EventController extends Controller
 {
@@ -37,6 +40,21 @@ class EventController extends Controller
         return view('events.show', [
             'event' => $event,
         ]);
+    }
+
+    /**
+     * Agrega el cliente a las suscripciones
+     *
+     * @param NewClientRequest $request
+     * @return void
+     */
+    public function suscription(NewClientRequest $request)
+    {
+        $client = Client::create($request->validated());
+
+        ClientSuscribed::dispatch($client);
+
+        return back()->with('suscribed', $client->name);
     }
 
     /**
