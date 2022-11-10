@@ -1,10 +1,11 @@
 <?php
 
-use App\Http\Controllers\Admin\AdminEventController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\ClientsController;
 use App\Http\Controllers\RegistrationController;
+use App\Http\Controllers\Admin\AdminHomeController;
+use App\Http\Controllers\Admin\AdminEventController;
 
 Route::get('/', function () {
     // redireccion temporal para la pagina de eventos
@@ -32,9 +33,13 @@ Route::group([
     'as' => 'admin.'
 ], function(){
 
-    Route::get('/', function() {
-        return view('admin.dashboard');
-    })->name('dashboard');
+    Route::get('/', [AdminHomeController::class, 'index'])->name('dashboard');
+
+    // Ruta para marcar las notificaciones leidas
+    Route::post('/readAll', function () {
+        auth()->user()->unreadNotifications->markAsRead();
+        return back();
+    })->name('readAll');
     
     Route::group([
         'controller' => ClientsController::class,
