@@ -7,6 +7,7 @@ use App\Models\Client;
 use App\Mail\ShareEvent;
 use Illuminate\Http\Request;
 use App\Events\ClientSuscribed;
+use App\Mail\SuccesfullySuscribed;
 use Flasher\Laravel\Facade\Flasher;
 use Illuminate\Support\Facades\Mail;
 use App\Http\Requests\NewClientRequest;
@@ -52,7 +53,10 @@ class EventController extends Controller
     {
         $client = Client::create($request->validated());
 
+        // Ejecuta el evento (notificacion al admin)
         ClientSuscribed::dispatch($client);
+        // Envia el correo del registro al cliente
+        Mail::to($client)->send(new SuccesfullySuscribed($client));
 
         return back()->with('suscribed', $client->name);
     }
@@ -68,6 +72,13 @@ class EventController extends Controller
         return view('events.register', compact('event'));
     }
 
+    /**
+     * Metodo para realizar el envío de invitación 
+     *
+     * @param Event $event
+     * @param Request $request
+     * @return void
+     */
     public function invite(Event $event, Request $request)
     {
         $validated = $request->validate([

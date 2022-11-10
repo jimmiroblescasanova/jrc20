@@ -22,6 +22,8 @@
 <x-slot:footer>
 <x-mail::footer>
 © {{ date('Y') }} {{ config('app.name') }}. @lang('Todos los derechos reservados.')
+<br/>
+Este es un mensaje auto-generado, por favor responder a la cuenta personal. Si deseas darte de baja de las suscripciones, puedes enviar un correo a: direccion@jrctecnologia.mx, con el asunto "Baja".
 </x-mail::footer>
 </x-slot:footer>
 </x-mail::layout>
