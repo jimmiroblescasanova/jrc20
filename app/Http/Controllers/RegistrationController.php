@@ -22,13 +22,13 @@ class RegistrationController extends Controller
     {
 
         if (!$registry = $event->registrations()->create($request->validated())) {
-           Flasher::addError('Algo salió mal, intenta de nuevo');
+           Flasher::addError('Algo salió mal, intenta de nuevo.');
            return back();
         }
 
         Mail::to($registry)->send(new RegistrationSuccess($event));
 
-        Flasher::addSuccess('Gracias por registrarte. Revisa tu correo.');
+        Flasher::addSuccess('Pronto recibirás la confirmación vía email.');
 
         return redirect()
             ->route('guest.events.show', $event);
