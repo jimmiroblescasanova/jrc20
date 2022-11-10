@@ -7,10 +7,9 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Mail\Mailables\Envelope;
-use Illuminate\Mail\Mailables\Attachment;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class SuccesfullySuscribed extends Mailable
+class SuccesfullySuscribed extends Mailable implements ShouldQueue
 {
     use Queueable, SerializesModels;
 
