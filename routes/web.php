@@ -20,12 +20,16 @@ Route::group([
     Route::get('/eventos', 'index')->name('index');
     Route::post('/eventos', 'suscription')->name('suscription');
     Route::get('/eventos/{event:slug}', 'show')->name('show');
-    Route::post('/eventos/{event:slug}', 'invite')->name('invite');;
-    Route::get('/eventos/{event:slug}/register', 'register')->name('register');
+    Route::post('/eventos/{event:slug}', 'invite')->name('invite');
 });
 
-Route::post('/eventos/{event:slug}/register', [RegistrationController::class, 'store'])
-    ->name('guest.registration.store');
+Route::group([
+    'controller' => RegistrationController::class,
+    'as' => 'guest.registration.'
+], function () {
+    Route::get('/eventos/{event:slug}/register', 'register')->name('register');
+    Route::post('/eventos/{event:slug}/register', 'store')->name('store');
+});
 
 Route::group([
     'middleware' => ['auth', 'verified'],

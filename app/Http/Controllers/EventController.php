@@ -62,17 +62,6 @@ class EventController extends Controller
     }
 
     /**
-     * Devuelve la vista del registro
-     *
-     * @param Event $event
-     * @return \Illuminate\Http\Response
-     */
-    public function register(Event $event)
-    {
-        return view('events.register', compact('event'));
-    }
-
-    /**
      * Metodo para realizar el envío de invitación 
      *
      * @param Event $event

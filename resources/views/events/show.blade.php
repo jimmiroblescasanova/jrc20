@@ -34,7 +34,7 @@
                 </div>
                 <div class="flex flex-col space-y-3 items-center">
                     @if ($event->date > NOW())
-                        <a href="{{ route('guest.events.register', $event) }}"
+                        <a href="{{ route('guest.registration.register', $event) }}"
                             class="bg-blue-500 text-white text-center rounded p-2 hover:bg-blue-600 active:bg-blue-800 inline-flex items-center">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
                                 class="mr-2 w-5 h-5">
