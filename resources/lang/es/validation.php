@@ -153,6 +153,7 @@ return [
         'name'          => 'nombre',
         'lastname'      => 'apelllido',
         'company'       => 'empresa',
+        'phone'         => 'teléfono',
     ],
 
 ];

@@ -2,7 +2,7 @@
 
     <div class="bg-gray-200 h-screen pt-16 md:pt-24 md:pb-8">
         <div class="bg-white p-5 mx-auto items-center w-4/5 rounded-lg border shadow-md">
-            <form action="{{ route('guest.registration.store', $event) }}" method="post">
+            <form action="{{ route('guest.registration.store', $event) }}" id="registerForm" method="post">
                 @csrf 
                 <fieldset class="border p-4 rounded">
                     <legend class="px-4 text-center uppercase font-medium">Evento: {{ $event->title }}</legend>
@@ -93,7 +93,8 @@
                 <div class="py-3 flex flex-col space-y-3">
                     <button 
                         type="submit" 
-                        class="w-full text-white bg-blue-500 p-2 rounded hover:bg-blue-700 cursor-pointer inline-flex items-center justify-center">
+                        id="sendForm" 
+                        class="w-full text-white bg-blue-500 p-2 rounded hover:bg-blue-700 cursor-pointer inline-flex items-center justify-center disabled:opacity-75 disabled:hover:bg-blue-500 disabled:hover:cursor-not-allowed">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="mr-2 w-5 h-5">
                         <path d="M5.433 13.917l1.262-3.155A4 4 0 017.58 9.42l6.92-6.918a2.121 2.121 0 013 3l-6.92 6.918c-.383.383-.84.685-1.343.886l-3.154 1.262a.5.5 0 01-.65-.65z" />
                         <path d="M3.5 5.75c0-.69.56-1.25 1.25-1.25H10A.75.75 0 0010 3H4.75A2.75 2.75 0 002 5.75v9.5A2.75 2.75 0 004.75 18h9.5A2.75 2.75 0 0017 15.25V10a.75.75 0 00-1.5 0v5.25c0 .69-.56 1.25-1.25 1.25h-9.5c-.69 0-1.25-.56-1.25-1.25v-9.5z" />
@@ -113,5 +114,22 @@
             </form>
         </div>
     </div>
+
+    <x-slot name="scripts">
+        <script>
+            let submitBtn = document.getElementById("sendForm");
+            let form = document.getElementById("registerForm");
+
+            form.addEventListener("submit", function(e) {
+                e.preventDefault();
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="animate-spin mr-2 w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99" /></svg> Validando datos...';
+                setTimeout(function() {
+                    form.submit();
+                },
+                1000);
+            });
+        </script>
+    </x-slot>
 
 </x-layout>
