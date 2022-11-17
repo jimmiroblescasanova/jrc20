@@ -1,13 +1,13 @@
 <!--Modal-->
-<div class="fixed hidden inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full" id="my-modal">
+<div class="fixed hidden inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full" id="overlay">
     <!--modal content-->
-    <div class="relative top-32 md:top-20 mx-auto p-5 border w-4/5 md:w-2/5 shadow-lg rounded-md bg-white">
+    <dialog id="modal" class="relative mx-auto p-5 border w-4/5 md:w-2/5 shadow-lg rounded-md bg-white open:animate-fade-in">
         <div class="mt-3 text-center">
             <!-- Modal body -->
             <form action="{{ route('guest.events.invite', $event) }}" method="POST">
                 @csrf 
                 <div class="mt-2 px-7 py-3">
-                    <x-input-icon name="name" label="Tu nombre" required>
+                    <x-input-icon name="name" label="Tu nombre" placeholder="Ej. Jimmi Robles" required>
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="text-gray-500 w-6 h-6">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z" />
                         </svg>
@@ -25,7 +25,7 @@
                         </svg>
                         Compartir
                     </button>
-                    <button id="ok-btn" class="inline-flex items-center justify-center px-4 py-2 bg-white border rounded-md w-full hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <button type="reset" id="closeModalBtn" class="inline-flex items-center justify-center px-4 py-2 bg-white border border-gray-400 rounded-md w-full hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="mr-2 w-6 h-6">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
@@ -34,5 +34,5 @@
                 </div>
             </form>
         </div>
-    </div>
+    </dialog>
 </div>

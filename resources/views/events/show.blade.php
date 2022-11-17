@@ -46,7 +46,7 @@
                             Registrarme a este evento
                         </a>
                     @endif
-                    <button type="button" id="share" class="border text-gray-800 hover:bg-gray-300 rounded py-2 px-4 inline-flex items-center justify-center">
+                    <button type="button" id="share" class="border border-gray-400 text-gray-800 hover:bg-gray-200 rounded py-2 px-4 inline-flex items-center justify-center">
                         <svg class="mr-2 w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"></path></svg>
                         Compartir a un amigo
                     </button>
@@ -59,10 +59,11 @@
 
     <x-slot name="scripts">
         <script>
-            const btn = document.getElementById('share');
+            const shareBtn = document.getElementById('share');
             // vars for the modal   
-            let modal = document.getElementById("my-modal");
-            let button = document.getElementById("ok-btn");
+            const overlay = document.getElementById("overlay");
+            const modal = document.getElementById("modal");
+            const closeModalBtn = document.getElementById("closeModalBtn");
 
             const shareData = {
                 title: 'JRC Tecnología',
@@ -72,7 +73,7 @@
 
             var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
             if (isMobile) {
-                btn.addEventListener('click', async () => {
+                shareBtn.addEventListener('click', async () => {
                     try {
                         await navigator.share(shareData);
                     } catch (err) {
@@ -80,16 +81,18 @@
                     }
                 });
             } else {
-                btn.addEventListener('click', function() {
-                    modal.style.display = "block";
-                    console.log('show modal');
+                shareBtn.addEventListener('click', () => {
+                    overlay.classList.toggle('hidden');
+                    modal.showModal();
+                });
+
+                closeModalBtn.addEventListener('click', () => {
+                    modal.close();
                 });
             }
-
-            button.onclick = function() {
-                modal.style.display = "none";
-                console.log('hide modal');
-            }
+            modal.addEventListener('close', (event) => {
+                overlay.classList.toggle('hidden');
+            });
         </script>
     </x-slot>
 </x-layout>
