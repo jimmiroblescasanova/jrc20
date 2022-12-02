@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\ClientsController;
 use App\Http\Controllers\RegistrationController;
+use App\Http\Controllers\Admin\AdminTagController;
 use App\Http\Controllers\Admin\AdminHomeController;
 use App\Http\Controllers\Admin\AdminEventController;
 
@@ -63,6 +64,17 @@ Route::group([
         Route::post('/crear-evento', 'store')->name('store');
         Route::get('/{event}/ver-evento', 'show')->name('show');
         Route::patch('/{event}/ver-evento', 'update')->name('update');
+        Route::delete('/{event}/ver-evento', 'delete')->name('delete');
+    });
+
+    Route::group([
+        'controller' => AdminTagController::class,
+        'prefix' => '/tags',
+        'as' => 'tags.',
+    ], function (){
+        Route::get('/', 'index')->name('index');
+        Route::post('/', 'store')->name('store');
+        Route::delete('/{tag}', 'destroy')->name('destroy');
     });
 
 });

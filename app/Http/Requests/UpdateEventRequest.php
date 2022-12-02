@@ -29,6 +29,7 @@ class UpdateEventRequest extends FormRequest
             'summary' => ['nullable', 'min:10', 'string'],
             'date' => ['required', 'date'],
             'image' => ['nullable', 'image'],
+            'tags' => ['nullable', 'array'],
         ];
     }
 }

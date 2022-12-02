@@ -21,6 +21,9 @@
                     <x-nav-link :href="route('admin.clients.index')" :active="request()->routeIs('admin.clients.*')">
                         Clientes registrados
                     </x-nav-link>
+                    <x-nav-link :href="route('admin.tags.index')" :active="request()->routeIs('admin.tags.*')">
+                        Tags
+                    </x-nav-link>
                     <x-nav-link :href="route('guest.events.index')">
                         FRONT
                     </x-nav-link>
@@ -79,6 +82,9 @@
                 Eventos
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('admin.clients.index')" :active="request()->routeIs('admin.clients.*')">
+                Clientes registrados
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('admin.tags.index')" :active="request()->routeIs('admin.tags.*')">
                 Clientes registrados
             </x-responsive-nav-link>
         </div>

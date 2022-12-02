@@ -24,11 +24,12 @@ class SaveEventRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => ['required', 'min:10', 'string'],
-            'subtitle' => ['nullable', 'min:10', 'string'],
-            'summary' => ['nullable', 'min:10', 'string'],
-            'image' => ['required', 'image'],
-            'date' => ['required', 'date'],
+            'title'     => ['required', 'min:10', 'string'],
+            'subtitle'  => ['nullable', 'min:10', 'string'],
+            'summary'   => ['nullable', 'min:10', 'string'],
+            'image'     => ['required', 'image'],
+            'date'      => ['required', 'date'],
+            'tags'      => ['nullable', 'array'],
         ];
     }
 }

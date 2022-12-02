@@ -4,6 +4,12 @@
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
                 Evento: {{ $event->title }}
             </h2>
+            <form action="{{ route('admin.events.delete', $event) }}" method="POST">
+                @csrf @method('delete')
+                <button type="submit" class="px-3 py-1 text-sm text-white bg-red-600 hover:bg-red-800 rounded transition-colors">
+                    Eliminar evento
+                </button>
+            </form>
         </div>
     </x-slot>
 
@@ -45,7 +51,17 @@
                             class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Temario, contenido, información, etc..."
                             >{{ $event->summary }}</textarea>
                     </div>
-                    <div class="mb-4"><a href="{{ asset('storage/'.$event->image) }}" target="_blank" class="hover:underline">Ver imagen en otra ventana</a></div>
+                    <div class="mb-4">
+                        <a href="{{ asset('storage/'.$event->image) }}" target="_blank" class="hover:underline">Ver imagen en otra ventana</a>
+                    </div>
+                    <div id="group-tags" class="mb-3">
+                        <label for="tags" class="block mb-2">Selecciona todas las etiquetas que correspondan:</label>
+                        <select name="tags[]" id="tags" class="w-full bg-gray-50 rounded-lg border-gray-300" multiple>
+                            @foreach ($tags as $id => $tag)
+                                <option value="{{ $id }}" @selected(in_array($id, $event->tags->pluck('id')->toArray()))>{{ $tag }}</option>
+                            @endforeach
+                        </select>
+                    </div>
                     <div id="group-file" class="mb-3">
                         <input type="file" name="image" id="image">
                     </div>

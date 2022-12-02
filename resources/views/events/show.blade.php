@@ -14,7 +14,7 @@
                 </div>
                 <div class="flex flex-col">
                     <span class="mb-3 text-gray-700">
-                        Fecha:
+                        Falta:
                         <span @class([
                             'bg-green-200' => $event->date > NOW(),
                             'bg-red-200' => $event->date <= NOW(),

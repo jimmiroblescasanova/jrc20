@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
+            Crear un evento nuevo
         </h2>
     </x-slot>
 
@@ -37,6 +37,14 @@
                             name="summary"
                             rows="5" 
                             class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Temario, contenido, información, etc..."></textarea>
+                    </div>
+                    <div id="group-tags" class="mb-3">
+                        <label for="tags" class="block mb-2">Selecciona todas las etiquetas que correspondan:</label>
+                        <select name="tags[]" id="tags" class="w-full bg-gray-50 rounded-lg border-gray-300" multiple>
+                            @foreach ($tags as $id => $tag)
+                                <option value="{{ $id }}">{{ $tag }}</option>
+                            @endforeach
+                        </select>
                     </div>
                     <div id="group-file" class="mb-3">
                         <input type="file" name="image" id="image">

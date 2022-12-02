@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Tag;
 use App\Models\Event;
 use App\Models\Client;
 use App\Mail\EventCreated;
@@ -36,13 +37,15 @@ class AdminEventController extends Controller
      */
     public function create()
     {
-        return view('admin.events.create');
+        $tags = Tag::pluck('name', 'id');
+        
+        return view('admin.events.create', compact('tags'));
     }
 
     public function store(SaveEventRequest $request)
     {
         $path = $request->file('image')->store('events');
-        $slug = Str::slug($request->title);
+        $slug = Str::slug($request->title) . '-' . NOW()->format('his');
 
         $event = Event::create([
             'title' => $request->title,
@@ -52,6 +55,8 @@ class AdminEventController extends Controller
             'image' => $path,
             'date' => $request->date,
         ]);
+        // se agregan las etiquetas a la relacion 
+        $event->tags()->sync($request->tags);
 
         // lógica para enviar el email al queue 
         $clients = Client::all();
@@ -60,6 +65,7 @@ class AdminEventController extends Controller
             Mail::to($recipient->email)->queue(new EventCreated($event));
         }
 
+        flash()->addSuccess('Evento creado con éxito');
         return redirect()->route('admin.events.index');
     }
 
@@ -71,7 +77,14 @@ class AdminEventController extends Controller
      */
     public function show(Event $event)
     {
-        return view('admin.events.show', compact('event'));
+        $tags = Tag::pluck('name', 'id');
+
+        // return $event->tags->pluck('id');
+
+        return view('admin.events.show', [
+            'event' => $event,
+            'tags' => $tags,
+        ]);
     }
 
     /**
@@ -92,6 +105,23 @@ class AdminEventController extends Controller
             ]);
         }
 
+        // se agregan las etiquetas a la relacion 
+        $event->tags()->sync($request->tags);
+
+        flash()->addSuccess('Evento actualizado con éxito');
+        return redirect()->route('admin.events.index');
+    }
+
+    public function delete(Event $event)
+    {
+        if($event->registrations()->exists())
+        {
+            flash()->addWarning('No se puede eliminar si tiene clientes registrados');
+            return back();
+        }
+
+        $event->delete();
+        flash()->addSuccess('Evento eliminado con éxito');
         return redirect()->route('admin.events.index');
     }
 }
