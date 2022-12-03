@@ -24,7 +24,7 @@
                     </h5>
                     <span class="text-xs">tags: 
                         @foreach ($event->tags as $tag)
-                            <span class="bg-blue-400 text-white shadow-sm px-2 py-1 rounded-full lowercase">{{ $tag->name }}</span>
+                            <span class="bg-blue-200 text-blue-600 font-semibold px-2 py-1 rounded-full">{{ $tag->name }}</span>
                         @endforeach
                     </span>
                 </div>

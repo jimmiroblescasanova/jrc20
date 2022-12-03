@@ -2,11 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EventController;
-use App\Http\Controllers\ClientsController;
 use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\Admin\AdminTagController;
 use App\Http\Controllers\Admin\AdminHomeController;
 use App\Http\Controllers\Admin\AdminEventController;
+use App\Http\Controllers\Admin\AdminClientsController;
 
 Route::get('/', function () {
     // redireccion temporal para la pagina de eventos
@@ -47,11 +47,12 @@ Route::group([
     })->name('readAll');
     
     Route::group([
-        'controller' => ClientsController::class,
+        'controller' => AdminClientsController::class,
         'prefix' => '/clientes-registrados',
         'as' => 'clients.'
     ], function (){
         Route::get('/', 'index')->name('index');
+        Route::post('/{client}/unsuscribe', 'unsuscribe')->name('unsuscribe');
     });
 
     Route::group([

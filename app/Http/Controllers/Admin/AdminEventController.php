@@ -59,7 +59,9 @@ class AdminEventController extends Controller
         $event->tags()->sync($request->tags);
 
         // lógica para enviar el email al queue 
-        $clients = Client::all();
+        $clients = Client::query()
+            ->where('unsuscribe_at', null)
+            ->get();
 
         foreach ($clients as $recipient) {
             Mail::to($recipient->email)->queue(new EventCreated($event));

@@ -10,5 +10,7 @@ class Client extends Model
 {
     use HasFactory, Notifiable;
 
-    protected $fillable = ['name', 'lastname', 'email', 'company'];
+    protected $fillable = ['name', 'lastname', 'email', 'company', 'unsuscribe_at'];
+
+    protected $dates = ['unsuscribe_at'];
 }

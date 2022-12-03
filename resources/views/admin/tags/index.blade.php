@@ -9,25 +9,31 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 sm:pb-3">
-            <div class="bg-white shadow-sm rounded-sm sm:rounded-lg p-3">
-                <form action="{{ route('admin.tags.store') }}" method="POST" class="flex flex-row">
+            <div class="bg-white border border-gray-300 shadow-sm rounded-sm sm:rounded-lg p-3">
+                <form action="{{ route('admin.tags.store') }}" method="POST">
                     @csrf
-                    <div class="grow">
-                        <x-input-icon name="name" label="Etiqueta:" placeholder="Nombre de la etiqueta">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-gray-500">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M9.568 3H5.25A2.25 2.25 0 003 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 005.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 009.568 3z" />
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 6h.008v.008H6V6z" />
-                            </svg>
-                        </x-input-icon>
-                        <x-input-error-single field="name" />   
+                    <div class="flex flex-row">
+                        <div class="grow">
+                            <div class="relative">
+                                <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                        stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-gray-500">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M9.568 3H5.25A2.25 2.25 0 003 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 005.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 009.568 3z" />
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 6h.008v.008H6V6z" />
+                                    </svg>
+                                </div>
+                                <input type="text" name="name" class="block w-full pl-12 p-2.5 text-sm border bg-gray-50 border-gray-300 text-gray-900 rounded-lg focus:ring-indigo-600 focus:border-indigo-600" placeholder="Ingresa el nombre de la nueva etiqueta...">
+                            </div>
+                        </div>
+                        <div class="flex-none px-3 my-auto">
+                            <button type="submit"
+                                class="bg-indigo-500 text-white text-sm py-2.5 px-4 rounded-lg hover:bg-indigo-700 active:bg-indigo-300">
+                                Guardar etiqueta
+                            </button>
+                        </div>
                     </div>
-                    <div class="flex-none px-3 my-auto">
-                        <button type="submit" class="bg-indigo-500 text-white py-2 px-4 rounded-lg hover:bg-indigo-700 active:bg-indigo-300">
-                            Guardar etiqueta
-                        </button>
-                    </div>
+                    <x-input-error-single field="name" />
                 </form>
             </div>
         </div>
@@ -59,7 +65,8 @@
                             <x-table.row class="text-right">
                                 <form action="{{ route('admin.tags.destroy', $tag) }}" method="POST">
                                     @csrf @method('delete')
-                                    <button type="submit" class="bg-red-500 text-white font-bold text-xs px-3 py-1 rounded-full hover:bg-red-800 active:bg-red-400">
+                                    <button type="submit"
+                                        class="bg-red-500 text-white font-bold text-xs px-3 py-1 rounded-full hover:bg-red-800 active:bg-red-400">
                                         Eliminar
                                     </button>
                                 </form>
