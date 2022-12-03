@@ -59,7 +59,7 @@
                             <x-table.row class="text-right">
                                 <form action="{{ route('admin.tags.destroy', $tag) }}" method="POST">
                                     @csrf @method('delete')
-                                    <button type="submit" class="bg-red-500 text-gray-100 text-xs px-3 py-1 rounded-full hover:text-white hover:bg-red-800 active:bg-red-400">
+                                    <button type="submit" class="bg-red-500 text-white font-bold text-xs px-3 py-1 rounded-full hover:bg-red-800 active:bg-red-400">
                                         Eliminar
                                     </button>
                                 </form>

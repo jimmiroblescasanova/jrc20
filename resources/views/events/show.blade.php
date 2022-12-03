@@ -9,12 +9,6 @@
                 <div>
                     <h5 class="mb-5 text-2xl uppercase font-bold -tracking-tight text-gray-900">
                         {{ $event->title }}
-                    </h5>
-                    <span class="text-xs">tags: contpaqi, contabilidad, facturacion</span>
-                </div>
-                <div class="flex flex-col">
-                    <span class="mb-3 text-gray-700">
-                        Falta:
                         <span @class([
                             'bg-green-200' => $event->date > NOW(),
                             'bg-red-200' => $event->date <= NOW(),
@@ -22,9 +16,21 @@
                             'px-2',
                             'text-xs',
                             'rounded',
+                            'font-normal',
+                            'lowercase',
                         ])>
                             {{ $event->date->diffForHumans() }}
                         </span>
+                    </h5>
+                    <span class="text-xs">tags: 
+                        @foreach ($event->tags as $tag)
+                            <span class="bg-blue-400 text-white shadow-sm px-2 py-1 rounded-full lowercase">{{ $tag->name }}</span>
+                        @endforeach
+                    </span>
+                </div>
+                <div class="flex flex-col">
+                    <span class="mb-3 text-gray-700">
+                        Fecha: {{ $event->date->format('d/m/Y') }}</span>
                     </span>
 
                     <span class="mb-1">Expositor: {{ $event->subtitle }}</span>
