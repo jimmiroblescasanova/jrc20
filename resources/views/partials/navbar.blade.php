@@ -26,9 +26,15 @@
                     </svg>
                     <span class="sr-only">Search icon</span>
                 </div>
-                <input type="text" id="search-navbar"
-                    class="block p-2 pl-10 w-full text-gray-900 bg-gray-50 rounded-lg border border-gray-300 sm:text-sm focus:ring-blue-500 focus:border-blue-500"
-                    placeholder="Buscar evento...">
+                <form action="{{ route('guest.events.search') }}" method="post">
+                    @csrf 
+                    <input 
+                        type="text" 
+                        name="search" 
+                        id="search-navbar"
+                        class="block p-2 pl-10 w-full text-gray-900 bg-gray-50 rounded-lg border border-gray-300 sm:text-sm focus:ring-blue-500 focus:border-blue-500" 
+                        placeholder="Buscar evento...">
+                </form>
             </div>
             <button onclick="toggle();" data-collapse-toggle="navbar-search" type="button"
                 class="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"

@@ -33,4 +33,13 @@ class Event extends Model
     {
         return $this->belongsToMany(Tag::class);
     }
+
+    public function scopeSearch($query, $searchTerm)
+    {
+        $searchTerm = "%$searchTerm%";
+
+        return $query->where('title', 'LIKE', $searchTerm)
+            ->orWhere('subtitle', 'LIKE', $searchTerm)
+            ->orWhere('summary', 'LIKE', $searchTerm);
+    }
 }
