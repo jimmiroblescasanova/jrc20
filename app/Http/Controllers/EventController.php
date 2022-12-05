@@ -80,4 +80,13 @@ class EventController extends Controller
         Flasher::addSuccess('La invitación ha sido enviada.');
         return back();
     }
+
+    public function search(Request $request)
+    {
+        $results = Event::search($request->search)
+            ->orderBy('date', 'desc')
+            ->get();
+
+        return view('events.search', compact('results'));
+    }
 }

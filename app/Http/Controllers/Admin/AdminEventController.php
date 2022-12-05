@@ -44,7 +44,6 @@ class AdminEventController extends Controller
 
     public function store(SaveEventRequest $request)
     {
-        $path = $request->file('image')->store('events');
         $slug = Str::slug($request->title) . '-' . NOW()->format('his');
 
         $event = Event::create([
@@ -52,14 +51,22 @@ class AdminEventController extends Controller
             'slug' => $slug,
             'subtitle' => $request->subtitle,
             'summary' => $request->summary,
-            'image' => $path,
+            'image' => '',
             'date' => $request->date,
         ]);
+
+        // Agregar la imagen y asociar el modelo
+        if ($request->has('image')) {
+            $event->addMediaFromRequest('image')->toMediaCollection();
+        }
+
         // se agregan las etiquetas a la relacion 
         $event->tags()->sync($request->tags);
 
         // lógica para enviar el email al queue 
-        $clients = Client::all();
+        $clients = Client::query()
+            ->where('unsuscribe_at', null)
+            ->get();
 
         foreach ($clients as $recipient) {
             Mail::to($recipient->email)->queue(new EventCreated($event));
@@ -98,11 +105,9 @@ class AdminEventController extends Controller
     {
         $event->update($request->safe()->except('image'));
 
-        if ($request->file('image')) {
-            $path = $request->file('image')->store('events');
-            $event->update([
-                'image' => $path,
-            ]);
+        // Agregar la imagen y asociar el modelo
+        if ($request->has('image')) {
+            $event->addMediaFromRequest('image')->toMediaCollection('events');
         }
 
         // se agregan las etiquetas a la relacion 

@@ -18,7 +18,7 @@ class AdminTagController extends Controller
     public function store(Request $request)
     {
         $validatedData = $this->validate($request, [
-            'name' => ['required', 'string', 'min:5'],
+            'name' => ['required', 'string'],
         ]);
 
         $tag = Tag::create($validatedData);

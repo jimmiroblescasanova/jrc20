@@ -2,7 +2,7 @@
 
     <div class="bg-gray-200 pb-12 md:h-screen pt-16 md:pt-24 md:pb-8">
         <div class="bg-white mx-auto items-center w-4/5 md:flex md:h-144 rounded-lg border shadow-md md:flex-row">
-            <img src="{{ asset('storage/' . $event->image) }}"
+            <img src="{{ $event->getFirstMediaUrl('events', 'full') }}"
                 class="object-fill md:object-cover md:h-full md:hover:object-scale-down rounded-t-lg md:w-1/2 md:max-w-2xl md:rounded-none md:rounded-l-lg"
                 alt="">
             <div class="grid h-full justify-between p-8 leading-normal">
@@ -24,7 +24,7 @@
                     </h5>
                     <span class="text-xs">tags: 
                         @foreach ($event->tags as $tag)
-                            <span class="bg-blue-400 text-white shadow-sm px-2 py-1 rounded-full lowercase">{{ $tag->name }}</span>
+                            <span class="bg-blue-200 text-blue-600 font-semibold px-2 py-1 rounded-full">{{ $tag->name }}</span>
                         @endforeach
                     </span>
                 </div>
