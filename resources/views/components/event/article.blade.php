@@ -16,8 +16,7 @@
         <div class="p-6">
             <h5 class="font-bold text-lg mb-3">{{ $event->title }}</h5>
             <p class="text-gray-500 mb-4">
-                <small>Fecha: <u>{{ $event->date->format('d.m.Y') }}</u> por
-                    <a href="" class="text-gray-900">{{ $event->subtitle }}</a></small>
+                <small>Fecha: <u>{{ $event->date->format('d.m.Y') }}</u> inicia {{ $event->date->diffForHumans() }}</small>
             </p>
             <p class="mb-4 pb-2">
                 {{ $event->short_summary }}

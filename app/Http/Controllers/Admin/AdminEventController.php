@@ -22,7 +22,7 @@ class AdminEventController extends Controller
     public function index()
     {
         $events = Event::query()
-            ->orderBy('date', 'desc')
+            ->orderBy('id', 'desc')
             ->paginate();
 
         return view('admin.events.index', [
@@ -57,7 +57,7 @@ class AdminEventController extends Controller
 
         // Agregar la imagen y asociar el modelo
         if ($request->has('image')) {
-            $event->addMediaFromRequest('image')->toMediaCollection();
+            $event->addMediaFromRequest('image')->toMediaCollection('events');
         }
 
         // se agregan las etiquetas a la relacion 
