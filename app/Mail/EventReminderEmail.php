@@ -46,6 +46,9 @@ class EventReminderEmail extends Mailable implements ShouldQueue
     {
         return new Content(
             markdown: 'mail.EventReminder',
+            with: [
+                'event' => $this->event,
+            ],
         );
     }
 

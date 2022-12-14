@@ -3,11 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Event;
+use App\Mail\EventReminderEmail;
 use App\Mail\RegistrationSuccess;
 use Flasher\Laravel\Facade\Flasher;
 use Illuminate\Support\Facades\Mail;
 use App\Http\Requests\SaveRegistrationRequest;
-use App\Mail\EventReminderEmail;
 
 class RegistrationController extends Controller
 {
@@ -32,7 +32,15 @@ class RegistrationController extends Controller
      */
     public function store(SaveRegistrationRequest $request, Event $event)
     {
+        // check if email already registered
+        if($event->registrations->contains('email', $request->email))
+        {
+            flash()->addWarning('Ops! Ese correo ya esta registrado.');
+            
+            return back()->withInput($request->input());
+        }
 
+        // create the registration and throw an error if fails
         if (!$registry = $event->registrations()->create($request->validated())) {
            Flasher::addError('Algo salió mal, intenta de nuevo.');
            return back();

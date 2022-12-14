@@ -22,7 +22,8 @@
                                 id="input-name" 
                                 name="name"
                                 class="pl-10 p-2.5 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 w-full block"
-                                placeholder="Nombre completo">
+                                placeholder="Nombre completo"
+                                value="{{ old('name') }}">
                         </div>
                         <x-input-error-single field="name" />
                     </div>
@@ -43,7 +44,8 @@
                                 id="input-email"
                                 name="email"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5"
-                                placeholder="ejemplo@mail.com">
+                                placeholder="ejemplo@mail.com"
+                                value="{{ old('email') }}">
                         </div>
                         <x-input-error-single field="email" />
                     </div>
@@ -64,7 +66,8 @@
                                 id="input-phone"
                                 name="phone"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5"
-                                placeholder="999 999 9999">
+                                placeholder="999 999 9999"
+                                value="{{ old('phone') }}">
                         </div>
                         <x-input-error-single field="phone" />
                     </div>
@@ -85,7 +88,8 @@
                                 id="input-company"
                                 name="company"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5"
-                                placeholder="MI EMPRESA SA DE CV">
+                                placeholder="MI EMPRESA SA DE CV"
+                                value="{{ old('company') }}">
                         </div>
                         <x-input-error-single field="company" />
                     </div>
